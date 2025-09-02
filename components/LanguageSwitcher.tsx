@@ -36,7 +36,7 @@ export const LanguageSwitcher: React.FC = () => {
     <div className="relative" ref={wrapperRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 flex items-center space-x-1 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-full transition-colors duration-300"
+        className="p-2 flex items-center space-x-1 text-zinc-400 hover:bg-zinc-700/50 rounded-full transition-colors duration-300"
         aria-label="Change language"
         aria-haspopup="true"
         aria-expanded={isOpen}
@@ -48,7 +48,7 @@ export const LanguageSwitcher: React.FC = () => {
 
       {isOpen && (
         <div 
-            className="absolute right-0 mt-2 w-36 bg-white dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 rounded-md shadow-lg py-1 z-50 animate-fade-in-down"
+            className="absolute right-0 mt-2 w-36 bg-zinc-800/80 backdrop-blur-lg border border-zinc-700/50 rounded-md shadow-lg py-1 z-50 animate-fade-in-down"
             role="menu"
         >
           {Object.entries(languages).map(([code, name]) => (
@@ -58,7 +58,7 @@ export const LanguageSwitcher: React.FC = () => {
               className={`w-full text-left px-4 py-2 text-sm ${
                 language === code
                   ? 'bg-blue-500 text-white'
-                  : 'text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-600'
+                  : 'text-zinc-200 hover:bg-zinc-700'
               }`}
               role="menuitem"
             >

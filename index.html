@@ -17,8 +17,48 @@
   }
 }
 </script>
+    <style>
+      :root {
+        --glow-color: hsl(220, 100%, 70%);
+      }
+      
+      /* Futuristic Aurora Background */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: radial-gradient(circle at 10% 10%, hsla(217, 100%, 85%, 0.1) 0px, transparent 40%),
+                          radial-gradient(circle at 90% 80%, hsla(280, 100%, 80%, 0.1) 0px, transparent 40%);
+        z-index: -1;
+        animation: move-aurora 20s infinite alternate;
+      }
+
+      @keyframes move-aurora {
+        0% { transform: translate(0, 0) scale(1); }
+        100% { transform: translate(5vw, -5vh) scale(1.2); }
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background-color: #1a1a1a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #4a4a4a;
+        border-radius: 4px;
+        border: 2px solid #1a1a1a;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: #6a6a6a;
+      }
+    </style>
 </head>
-  <body class="bg-zinc-50 dark:bg-zinc-900">
+  <body class="bg-zinc-900">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

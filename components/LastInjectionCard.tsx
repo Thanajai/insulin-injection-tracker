@@ -56,20 +56,20 @@ export const LastInjectionCard: React.FC<LastInjectionCardProps> = ({ lastInject
   const { t, language } = useTranslation();
 
   return (
-    <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-md flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+    <div className="bg-zinc-800/30 backdrop-blur-lg border border-zinc-700/50 p-6 rounded-2xl shadow-lg shadow-black/20 flex flex-col justify-between transition-all duration-300 hover:border-zinc-600/60 hover:scale-[1.02]">
       <div>
-        <div className="flex items-center space-x-2 text-zinc-500 dark:text-zinc-400">
+        <div className="flex items-center space-x-2 text-zinc-400">
           <ClockIcon className="w-5 h-5" />
           <h3 className="text-sm font-semibold uppercase tracking-wider">{t('lastInjection')}</h3>
         </div>
         {lastInjection ? (
-          <p className="text-4xl lg:text-5xl font-bold text-blue-600 dark:text-blue-500 mt-3">{timeAgo}</p>
+          <p className="text-4xl lg:text-5xl font-bold text-blue-400 mt-3">{timeAgo}</p>
         ) : (
-          <p className="text-3xl font-bold text-zinc-700 dark:text-zinc-300 mt-3">{t('noInjectionsLogged')}</p>
+          <p className="text-3xl font-bold text-zinc-300 mt-3">{t('noInjectionsLogged')}</p>
         )}
       </div>
       {lastInjection && (
-        <div className="mt-4 text-sm text-zinc-500 dark:text-zinc-400">
+        <div className="mt-4 text-sm text-zinc-400">
            {t('atTime', { time: new Date(lastInjection.timestamp).toLocaleTimeString(language, { hour: '2-digit', minute: '2-digit' }) })}
         </div>
       )}

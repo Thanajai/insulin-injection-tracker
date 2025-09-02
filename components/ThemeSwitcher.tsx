@@ -8,7 +8,7 @@ export const ThemeSwitcher: React.FC = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-700 rounded-full transition-all duration-300 transform hover:scale-110"
+      className="p-2 text-zinc-400 hover:bg-zinc-700/50 rounded-full transition-all duration-300 transform hover:scale-110"
       aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
     >
       {theme === 'light' ? (

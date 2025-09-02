@@ -103,15 +103,16 @@ export const translations = {
     edit: 'Edit',
     delete: 'Delete',
 
+    // FIX: Add ChatBot translations
     // ChatBot
-    chatWithAI: 'Chat with GlucoGuide AI',
+    aiWelcomeMessage: "Hello! I'm GlucoGuide, your AI assistant for diabetes management. How can I help you today?",
+    aiError: 'Sorry, I am having trouble connecting. Please try again later.',
+    chatWithAI: 'Chat with AI Assistant',
     aiAssistant: 'AI Assistant',
-    chatDisclaimer: 'GlucoGuide is an AI assistant and cannot give medical advice.',
+    aiLoading: 'Thinking...',
+    chatDisclaimer: 'This is an AI assistant. Information may be inaccurate.',
     typeYourMessage: 'Type your message...',
-    sendMessage: 'Send message',
-    aiWelcomeMessage: "Hello! I'm GlucoGuide. How can I help you with your diabetes management questions today?",
-    aiLoading: 'GlucoGuide is thinking...',
-    aiError: 'Sorry, I encountered an error. Please try again later.',
+    sendMessage: 'Send Message',
   },
   es: {
     // General
@@ -217,15 +218,16 @@ export const translations = {
     edit: 'Editar',
     delete: 'Eliminar',
 
+    // FIX: Add ChatBot translations
     // ChatBot
-    chatWithAI: 'Chatea con GlucoGuide AI',
+    aiWelcomeMessage: '¡Hola! Soy GlucoGuide, tu asistente de IA para el manejo de la diabetes. ¿En qué puedo ayudarte hoy?',
+    aiError: 'Lo siento, tengo problemas para conectarme. Por favor, inténtalo de nuevo más tarde.',
+    chatWithAI: 'Chatear con Asistente de IA',
     aiAssistant: 'Asistente de IA',
-    chatDisclaimer: 'GlucoGuide es un asistente de IA y no puede dar consejos médicos.',
+    aiLoading: 'Pensando...',
+    chatDisclaimer: 'Este es un asistente de IA. La información puede ser inexacta.',
     typeYourMessage: 'Escribe tu mensaje...',
-    sendMessage: 'Enviar mensaje',
-    aiWelcomeMessage: '¡Hola! Soy GlucoGuide. ¿Cómo puedo ayudarte hoy con tus preguntas sobre el manejo de la diabetes?',
-    aiLoading: 'GlucoGuide está pensando...',
-    aiError: 'Lo siento, encontré un error. Por favor, inténtalo de nuevo más tarde.',
+    sendMessage: 'Enviar Mensaje',
   },
   fr: {
     // General
@@ -331,15 +333,16 @@ export const translations = {
     edit: 'Modifier',
     delete: 'Supprimer',
 
+    // FIX: Add ChatBot translations
     // ChatBot
-    chatWithAI: 'Discutez avec GlucoGuide AI',
+    aiWelcomeMessage: 'Bonjour ! Je suis GlucoGuide, votre assistant IA pour la gestion du diabète. Comment puis-je vous aider aujourd’hui ?',
+    aiError: 'Désolé, j’ai des difficultés à me connecter. Veuillez réessayer plus tard.',
+    chatWithAI: 'Discuter avec l’assistant IA',
     aiAssistant: 'Assistant IA',
-    chatDisclaimer: "GlucoGuide est un assistant IA et ne peut pas donner de conseils médicaux.",
+    aiLoading: 'Réflexion...',
+    chatDisclaimer: 'Ceci est un assistant IA. Les informations peuvent être inexactes.',
     typeYourMessage: 'Tapez votre message...',
     sendMessage: 'Envoyer le message',
-    aiWelcomeMessage: "Bonjour ! Je suis GlucoGuide. Comment puis-je vous aider aujourd'hui avec vos questions sur la gestion du diabète ?",
-    aiLoading: 'GlucoGuide réfléchit...',
-    aiError: "Désolé, j'ai rencontré une erreur. Veuillez réessayer plus tard.",
   },
   de: {
     // General
@@ -445,15 +448,16 @@ export const translations = {
     edit: 'Bearbeiten',
     delete: 'Löschen',
 
+    // FIX: Add ChatBot translations
     // ChatBot
-    chatWithAI: 'Chatten Sie mit GlucoGuide AI',
+    aiWelcomeMessage: 'Hallo! Ich bin GlucoGuide, Ihr KI-Assistent für das Diabetes-Management. Wie kann ich Ihnen heute helfen?',
+    aiError: 'Entschuldigung, ich habe Verbindungsprobleme. Bitte versuchen Sie es später erneut.',
+    chatWithAI: 'Mit KI-Assistent chatten',
     aiAssistant: 'KI-Assistent',
-    chatDisclaimer: 'GlucoGuide ist ein KI-Assistent und kann keine medizinischen Ratschläge geben.',
+    aiLoading: 'Denken...',
+    chatDisclaimer: 'Dies ist ein KI-Assistent. Informationen können ungenau sein.',
     typeYourMessage: 'Geben Sie Ihre Nachricht ein...',
     sendMessage: 'Nachricht senden',
-    aiWelcomeMessage: 'Hallo! Ich bin GlucoGuide. Wie kann ich Ihnen heute bei Ihren Fragen zum Diabetes-Management helfen?',
-    aiLoading: 'GlucoGuide denkt nach...',
-    aiError: 'Entschuldigung, es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.',
   },
   hi: {
     // General
@@ -558,15 +562,16 @@ export const translations = {
     deleteConfirmation: 'क्या आप वाकई इस इंजेक्शन रिकॉर्ड को हटाना चाहते हैं?',
     edit: 'संपादित करें',
     delete: 'हटाएं',
-
+    
+    // FIX: Add ChatBot translations
     // ChatBot
-    chatWithAI: 'ग्लूकोगाइड एआई के साथ चैट करें',
+    aiWelcomeMessage: 'नमस्ते! मैं ग्लूकोगाइड हूं, मधुमेह प्रबंधन के लिए आपका एआई सहायक। मैं आज आपकी कैसे मदद कर सकता हूं?',
+    aiError: 'क्षमा करें, मुझे कनेक्ट होने में समस्या आ रही है। कृपया बाद में पुनः प्रयास करें।',
+    chatWithAI: 'एआई सहायक के साथ चैट करें',
     aiAssistant: 'एआई सहायक',
-    chatDisclaimer: 'ग्लूकोगाइड एक एआई सहायक है और चिकित्सा सलाह नहीं दे सकता।',
+    aiLoading: 'सोच रहा है...',
+    chatDisclaimer: 'यह एक एआई सहायक है। जानकारी गलत हो सकती है।',
     typeYourMessage: 'अपना संदेश टाइप करें...',
     sendMessage: 'संदेश भेजें',
-    aiWelcomeMessage: 'नमस्ते! मैं ग्लूकोगाइड हूं। आज मैं आपके मधुमेह प्रबंधन प्रश्नों में आपकी कैसे मदद कर सकता हूं?',
-    aiLoading: 'ग्लूकोगाइड सोच रहा है...',
-    aiError: 'क्षमा करें, मुझे एक त्रुटि का सामना करना पड़ा। कृपया बाद में पुनः प्रयास करें।',
   },
 };

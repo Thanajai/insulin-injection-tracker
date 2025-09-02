@@ -15,7 +15,7 @@ interface InjectionListProps {
 
 interface InjectionListItemProps {
     injection: Injection;
-    onDelete: (id: string) => void;
+    onDelete: (id:string) => void;
     onEdit: (injection: Injection) => void;
     currentUser: User | null;
 }
@@ -50,33 +50,33 @@ const InjectionListItem: React.FC<InjectionListItemProps> = ({ injection, onDele
     const isDoctor = currentUser?.role === 'Doctor';
 
     return (
-        <li className="bg-white dark:bg-zinc-800 rounded-xl shadow-md p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0 sm:space-x-4 transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+        <li className="bg-zinc-800/30 backdrop-blur-lg border border-zinc-700/50 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0 sm:space-x-4 transition-all duration-300 hover:shadow-xl hover:border-zinc-600/60 hover:scale-[1.02]">
             <div className="flex-grow">
                 <div className="flex items-center space-x-4 mb-2">
                     <span className={`px-3 py-1 text-sm font-semibold rounded-full ${typeDetails.colorClass}`}>
                         {typeDetails.name}
                     </span>
-                    <p className="text-zinc-500 dark:text-zinc-400 font-medium">{formattedDate} at {formattedTime}</p>
+                    <p className="text-zinc-400 font-medium">{formattedDate} at {formattedTime}</p>
                 </div>
                 <div className="flex items-baseline space-x-2">
-                    <p className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">{units.toLocaleString(language)}</p>
-                    <span className="text-zinc-500 dark:text-zinc-400">{t('units')}</span>
+                    <p className="text-3xl font-bold text-zinc-100">{units.toLocaleString(language)}</p>
+                    <span className="text-zinc-400">{t('units')}</span>
                 </div>
-                {notes && <p className="mt-2 text-zinc-600 dark:text-zinc-300 italic">"{notes}"</p>}
+                {notes && <p className="mt-2 text-zinc-300 italic">"{notes}"</p>}
             </div>
             <div className="flex items-center self-end sm:self-center">
               {isDoctor && (
                   <>
                     <button 
                         onClick={() => onEdit(injection)}
-                        className="p-2 text-zinc-400 dark:text-zinc-500 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-blue-100 dark:hover:bg-zinc-700 rounded-full transition-colors"
+                        className="p-2 text-zinc-400 hover:text-blue-400 hover:bg-blue-500/20 rounded-full transition-colors"
                         aria-label={t('edit')}
                     >
                         <PencilIcon className="w-5 h-5" />
                     </button>
                     <button 
                         onClick={() => onDelete(id)}
-                        className="p-2 text-zinc-400 dark:text-zinc-500 hover:text-blue-500 dark:hover:text-blue-400 hover:bg-blue-100 dark:hover:bg-zinc-700 rounded-full transition-colors"
+                        className="p-2 text-zinc-400 hover:text-red-400 hover:bg-red-500/20 rounded-full transition-colors"
                         aria-label={t('delete')}
                     >
                         <TrashIcon className="w-5 h-5" />
@@ -92,7 +92,7 @@ export const InjectionList: React.FC<InjectionListProps> = ({ injections, onDele
   const { t } = useTranslation();
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">{t('injectionHistory')}</h2>
+      <h2 className="text-2xl font-bold text-zinc-100 tracking-tight">{t('injectionHistory')}</h2>
       {injections.length > 0 ? (
         <ul className="space-y-4">
           {injections.map((injection) => (
@@ -100,15 +100,15 @@ export const InjectionList: React.FC<InjectionListProps> = ({ injections, onDele
           ))}
         </ul>
       ) : (
-        <div className="text-center py-12 px-6 bg-white dark:bg-zinc-800 rounded-xl shadow-md">
-            <p className="text-zinc-500 dark:text-zinc-400">
+        <div className="text-center py-12 px-6 bg-zinc-800/30 backdrop-blur-lg border border-zinc-700/50 rounded-2xl">
+            <p className="text-zinc-400">
               {currentPatientId 
                 ? t('noInjectionsForPatient', { patientName: getPatientName(currentPatientId) })
                 : t('noInjectionsYet')
               }
             </p>
             {currentUser?.role === 'Doctor' && (
-                <p className="mt-2 text-sm text-zinc-400 dark:text-zinc-500">{t('addNewInjectionHint')}</p>
+                <p className="mt-2 text-sm text-zinc-500">{t('addNewInjectionHint')}</p>
             )}
         </div>
       )}

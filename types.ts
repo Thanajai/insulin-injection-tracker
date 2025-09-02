@@ -30,6 +30,7 @@ export interface ScheduledDose {
   sourceInjectionId: string; // The ID of the injection that scheduled this dose
 }
 
+// FIX: Add ChatMessage type for the ChatBot component
 export interface ChatMessage {
   role: 'user' | 'model';
   text: string;

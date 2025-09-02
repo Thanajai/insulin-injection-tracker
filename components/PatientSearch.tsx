@@ -64,14 +64,14 @@ export const PatientSearch: React.FC<PatientSearchProps> = ({ patients, currentP
                 onFocus={() => setIsOpen(true)}
                 onClick={() => setIsOpen(true)}
                 placeholder={t('searchPatient')}
-                className="w-full bg-white dark:bg-zinc-700 text-black dark:text-white placeholder-zinc-500 dark:placeholder-zinc-400 border border-zinc-300 dark:border-zinc-600 rounded-md py-2 pl-10 pr-10 text-sm font-medium focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-colors"
+                className="w-full bg-zinc-900/50 text-white placeholder-zinc-400 border border-zinc-700 rounded-lg py-2 pl-10 pr-10 text-sm font-medium focus:ring-2 focus:ring-blue-500/70 focus:border-blue-500 outline-none transition-all"
                 aria-label={t('searchPatient')}
                 autoComplete="off"
             />
             <button 
                 type="button" 
                 onClick={() => setIsOpen(!isOpen)} 
-                className="absolute inset-y-0 right-0 flex items-center px-3 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200"
+                className="absolute inset-y-0 right-0 flex items-center px-3 text-zinc-400 hover:text-zinc-200"
                 aria-label={t('togglePatientList')}
             >
                 <ChevronDownIcon className={`w-5 h-5 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
@@ -79,13 +79,13 @@ export const PatientSearch: React.FC<PatientSearchProps> = ({ patients, currentP
         </div>
 
         {isOpen && (
-        <ul className="absolute z-10 mt-1 w-full bg-white dark:bg-zinc-700 border border-zinc-300 dark:border-zinc-600 rounded-md shadow-lg max-h-60 overflow-auto animate-fade-in-down">
+        <ul className="absolute z-10 mt-1 w-full bg-zinc-800/80 backdrop-blur-lg border border-zinc-700/50 rounded-md shadow-lg max-h-60 overflow-auto animate-fade-in-down">
           {filteredPatients.length > 0 ? (
             filteredPatients.map(p => (
                 <li
                 key={p}
                 onClick={() => handleSelect(p)}
-                className="px-4 py-2 text-sm text-zinc-800 dark:text-zinc-200 hover:bg-blue-500 hover:text-white cursor-pointer transition-colors"
+                className="px-4 py-2 text-sm text-zinc-200 hover:bg-blue-500 hover:text-white cursor-pointer transition-colors"
                 role="option"
                 aria-selected={p === currentPatientId}
                 >
@@ -93,7 +93,7 @@ export const PatientSearch: React.FC<PatientSearchProps> = ({ patients, currentP
                 </li>
             ))
           ) : (
-            <li className="px-4 py-2 text-sm text-zinc-500 dark:text-zinc-400 italic">{t('noPatientsFound')}</li>
+            <li className="px-4 py-2 text-sm text-zinc-400 italic">{t('noPatientsFound')}</li>
           )}
         </ul>
       )}

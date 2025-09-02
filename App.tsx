@@ -10,8 +10,8 @@ import { NextDoseCard } from './components/NextDoseCard';
 import { PlusIcon } from './components/icons';
 import { HomePage } from './components/HomePage';
 import { AuthPage } from './components/AuthPage';
-import { ChatBot } from './components/ChatBot';
 import { useTranslation } from './components/LanguageProvider';
+import { ChatBot } from './components/ChatBot';
 
 const App: React.FC = () => {
   const [injections, setInjections] = useState<Injection[]>([]);
@@ -239,7 +239,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen text-zinc-800 dark:text-zinc-200 font-sans">
+    <div className="min-h-screen text-zinc-200 font-sans antialiased">
       <Header 
         currentUser={currentUser}
         onLogInjection={handleOpenAddModal}
@@ -254,9 +254,9 @@ const App: React.FC = () => {
       <main className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto">
         {currentPatientId ? (
           <div className="animate-fade-in">
-            {currentUser.role === 'Patient' && scheduledDose && (
+            {currentUser.role === 'Patient' && (
               <div className="mb-8">
-                  <NextDoseCard scheduledDose={scheduledDose} injections={injections} />
+                <NextDoseCard scheduledDose={scheduledDose} injections={injections} />
               </div>
             )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -293,19 +293,20 @@ const App: React.FC = () => {
           doctorUsername={currentUser.username}
         />
       )}
-
-      {currentPatientId && currentUser.role === 'Doctor' && (
-        <button
-          onClick={handleOpenAddModal}
-          className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-lg transition-transform transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-300"
-          aria-label={t('logNewInjection')}
-        >
-          <PlusIcon className="w-8 h-8" />
-        </button>
-      )}
-
+      
       {currentPatientId && (
-        <ChatBot key={currentPatientId} patientId={currentPatientId} />
+        <>
+            {currentUser.role === 'Doctor' && (
+                <button
+                    onClick={handleOpenAddModal}
+                    className="fixed bottom-6 right-6 bg-blue-500/30 backdrop-blur-md border border-blue-500/50 hover:bg-blue-500/50 text-blue-300 rounded-full p-4 shadow-lg shadow-blue-500/20 transition-all transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+                    aria-label={t('logNewInjection')}
+                >
+                    <PlusIcon className="w-8 h-8" />
+                </button>
+            )}
+            <ChatBot patientId={currentPatientId} />
+        </>
       )}
     </div>
   );
