@@ -1,0 +1,5 @@
+{
+  "name": "Insulin Injection Tracker",
+  "description": "A reliable application to accurately track insulin injection times and dosages. This tool helps individuals with diabetes prevent insulin overdose and underdosage, improving their overall diabetes management and reducing associated health risks.",
+  "requestFramePermissions": []
+}
