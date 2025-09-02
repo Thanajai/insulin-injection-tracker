@@ -35,7 +35,16 @@ export const ChatBot: React.FC<ChatBotProps> = ({ patientId }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Initialize the chat session when the component mounts or patientId changes
+    // Check for API key first. This provides a clear error message to the developer if the environment variable is not set.
+    if (!process.env.API_KEY) {
+      console.error("Gemini API key is not configured. Please set the API_KEY environment variable in your deployment environment.");
+      setError("AI Assistant is not configured. The API key is missing.");
+      setChatSession(null);
+      setMessages([]);
+      return;
+    }
+
+    // Initialize the chat session
     try {
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
       const session = ai.chats.create({
@@ -43,12 +52,15 @@ export const ChatBot: React.FC<ChatBotProps> = ({ patientId }) => {
         config: { systemInstruction },
       });
       setChatSession(session);
+      setError(null);
       setMessages([
         { role: 'model', text: t('aiWelcomeMessage') },
       ]);
     } catch (e) {
       console.error("Failed to initialize Gemini AI:", e);
       setError(t('aiError'));
+      setChatSession(null);
+      setMessages([]);
     }
   }, [patientId, t]);
 
@@ -83,11 +95,14 @@ export const ChatBot: React.FC<ChatBotProps> = ({ patientId }) => {
     } catch (e) {
       console.error("Gemini API error:", e);
       setError(t('aiError'));
-      setMessages(prev => [...prev.slice(0, -1)]); // Remove user message if API fails
+      // On failure, remove the user message and the empty model placeholder
+      setMessages(prev => prev.slice(0, -2));
     } finally {
       setIsLoading(false);
     }
   };
+
+  const isChatDisabled = isLoading || !chatSession;
 
   return (
     <>
@@ -148,13 +163,13 @@ export const ChatBot: React.FC<ChatBotProps> = ({ patientId }) => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={t('typeYourMessage')}
-                className="w-full px-4 py-2 bg-zinc-900/50 text-white placeholder-zinc-400 border border-zinc-700 rounded-full focus:ring-2 focus:ring-purple-500/70 focus:border-purple-500 outline-none transition-all"
-                disabled={isLoading}
+                className="w-full px-4 py-2 bg-zinc-900/50 text-white placeholder-zinc-400 border border-zinc-700 rounded-full focus:ring-2 focus:ring-purple-500/70 focus:border-purple-500 outline-none transition-all disabled:opacity-50"
+                disabled={isChatDisabled}
               />
               <button
                 type="submit"
                 className="p-3 bg-purple-600 text-white rounded-full hover:bg-purple-500 shadow-md shadow-purple-500/20 hover:shadow-lg hover:shadow-purple-500/30 disabled:bg-purple-500/50 disabled:shadow-none disabled:cursor-not-allowed transition-all transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-purple-500/50"
-                disabled={!input.trim() || isLoading}
+                disabled={!input.trim() || isChatDisabled}
                 aria-label={t('sendMessage')}
               >
                 <PaperAirplaneIcon className="w-5 h-5" />
