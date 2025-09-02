@@ -29,3 +29,8 @@ export interface ScheduledDose {
   type: InsulinType;
   sourceInjectionId: string; // The ID of the injection that scheduled this dose
 }
+
+export interface ChatMessage {
+  role: 'user' | 'model';
+  text: string;
+}

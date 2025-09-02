@@ -102,6 +102,16 @@ export const translations = {
     deleteConfirmation: 'Are you sure you want to delete this injection record?',
     edit: 'Edit',
     delete: 'Delete',
+
+    // ChatBot
+    chatWithAI: 'Chat with GlucoGuide AI',
+    aiAssistant: 'AI Assistant',
+    chatDisclaimer: 'GlucoGuide is an AI assistant and cannot give medical advice.',
+    typeYourMessage: 'Type your message...',
+    sendMessage: 'Send message',
+    aiWelcomeMessage: "Hello! I'm GlucoGuide. How can I help you with your diabetes management questions today?",
+    aiLoading: 'GlucoGuide is thinking...',
+    aiError: 'Sorry, I encountered an error. Please try again later.',
   },
   es: {
     // General
@@ -206,6 +216,16 @@ export const translations = {
     deleteConfirmation: '¿Estás seguro de que quieres eliminar este registro de inyección?',
     edit: 'Editar',
     delete: 'Eliminar',
+
+    // ChatBot
+    chatWithAI: 'Chatea con GlucoGuide AI',
+    aiAssistant: 'Asistente de IA',
+    chatDisclaimer: 'GlucoGuide es un asistente de IA y no puede dar consejos médicos.',
+    typeYourMessage: 'Escribe tu mensaje...',
+    sendMessage: 'Enviar mensaje',
+    aiWelcomeMessage: '¡Hola! Soy GlucoGuide. ¿Cómo puedo ayudarte hoy con tus preguntas sobre el manejo de la diabetes?',
+    aiLoading: 'GlucoGuide está pensando...',
+    aiError: 'Lo siento, encontré un error. Por favor, inténtalo de nuevo más tarde.',
   },
   fr: {
     // General
@@ -310,6 +330,16 @@ export const translations = {
     deleteConfirmation: 'Êtes-vous sûr de vouloir supprimer cet enregistrement d’injection ?',
     edit: 'Modifier',
     delete: 'Supprimer',
+
+    // ChatBot
+    chatWithAI: 'Discutez avec GlucoGuide AI',
+    aiAssistant: 'Assistant IA',
+    chatDisclaimer: "GlucoGuide est un assistant IA et ne peut pas donner de conseils médicaux.",
+    typeYourMessage: 'Tapez votre message...',
+    sendMessage: 'Envoyer le message',
+    aiWelcomeMessage: "Bonjour ! Je suis GlucoGuide. Comment puis-je vous aider aujourd'hui avec vos questions sur la gestion du diabète ?",
+    aiLoading: 'GlucoGuide réfléchit...',
+    aiError: "Désolé, j'ai rencontré une erreur. Veuillez réessayer plus tard.",
   },
   de: {
     // General
@@ -414,6 +444,16 @@ export const translations = {
     deleteConfirmation: 'Sind Sie sicher, dass Sie diesen Injektionsdatensatz löschen möchten?',
     edit: 'Bearbeiten',
     delete: 'Löschen',
+
+    // ChatBot
+    chatWithAI: 'Chatten Sie mit GlucoGuide AI',
+    aiAssistant: 'KI-Assistent',
+    chatDisclaimer: 'GlucoGuide ist ein KI-Assistent und kann keine medizinischen Ratschläge geben.',
+    typeYourMessage: 'Geben Sie Ihre Nachricht ein...',
+    sendMessage: 'Nachricht senden',
+    aiWelcomeMessage: 'Hallo! Ich bin GlucoGuide. Wie kann ich Ihnen heute bei Ihren Fragen zum Diabetes-Management helfen?',
+    aiLoading: 'GlucoGuide denkt nach...',
+    aiError: 'Entschuldigung, es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.',
   },
   hi: {
     // General
@@ -451,12 +491,12 @@ export const translations = {
     // Home Page
     welcomeDoctor: 'आपका स्वागत है, डॉ. {username}!',
     welcomePatient: 'आपका स्वागत है, {username}!',
-    selectPatientPrompt: 'रोगी का इंजेक्शन इतिहास देखने के लिए एक रोगी प्रोफ़ाइल चुनें।',
-    useSearchBarHint: 'शुरू करने के लिए हेडर में खोज बार का उपयोग करें',
+    selectPatientPrompt: 'रोगी का इंजेक्शन इतिहास देखने के لیے एक रोगी प्रोफ़ाइल चुनें।',
+    useSearchBarHint: 'शुरू करने के لیے हेडर में खोज बार का उपयोग करें',
     orAddPatient: 'या एक नया रोगी जोड़ें',
-    getStartedPrompt: 'शुरू करने के लिए, कृपया अपनी पहली रोगी प्रोफ़ाइल बनाएं।',
+    getStartedPrompt: 'शुरू करने के لیے, कृपया अपनी पहली रोगी प्रोफ़ाइल बनाएं।',
     addFirstPatient: 'पहला रोगी जोड़ें',
-    patientDashboardReady: 'आपका इंजेक्शन डैशबोर्ड तैयार है। नया इंजेक्शन लॉग करने के लिए \'+\' बटन का उपयोग करें।',
+    patientDashboardReady: 'आपका इंजेक्शन डैशबोर्ड तैयार है। नया इंजेक्शन लॉग करने के لیے \'+\' बटन का उपयोग करें।',
 
     // Patient Form
     addNewPatient: 'नया रोगी जोड़ें',
@@ -518,5 +558,15 @@ export const translations = {
     deleteConfirmation: 'क्या आप वाकई इस इंजेक्शन रिकॉर्ड को हटाना चाहते हैं?',
     edit: 'संपादित करें',
     delete: 'हटाएं',
+
+    // ChatBot
+    chatWithAI: 'ग्लूकोगाइड एआई के साथ चैट करें',
+    aiAssistant: 'एआई सहायक',
+    chatDisclaimer: 'ग्लूकोगाइड एक एआई सहायक है और चिकित्सा सलाह नहीं दे सकता।',
+    typeYourMessage: 'अपना संदेश टाइप करें...',
+    sendMessage: 'संदेश भेजें',
+    aiWelcomeMessage: 'नमस्ते! मैं ग्लूकोगाइड हूं। आज मैं आपके मधुमेह प्रबंधन प्रश्नों में आपकी कैसे मदद कर सकता हूं?',
+    aiLoading: 'ग्लूकोगाइड सोच रहा है...',
+    aiError: 'क्षमा करें, मुझे एक त्रुटि का सामना करना पड़ा। कृपया बाद में पुनः प्रयास करें।',
   },
 };

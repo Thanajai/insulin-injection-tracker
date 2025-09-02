@@ -10,6 +10,7 @@ import { NextDoseCard } from './components/NextDoseCard';
 import { PlusIcon } from './components/icons';
 import { HomePage } from './components/HomePage';
 import { AuthPage } from './components/AuthPage';
+import { ChatBot } from './components/ChatBot';
 import { useTranslation } from './components/LanguageProvider';
 
 const App: React.FC = () => {
@@ -301,6 +302,10 @@ const App: React.FC = () => {
         >
           <PlusIcon className="w-8 h-8" />
         </button>
+      )}
+
+      {currentPatientId && (
+        <ChatBot key={currentPatientId} patientId={currentPatientId} />
       )}
     </div>
   );
