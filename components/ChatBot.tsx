@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, FormEvent } from 'react';
-import { GoogleGenAI, Chat } from '@google/genai';
 import type { ChatMessage } from '../types';
 import { useTranslation } from './LanguageProvider';
 import {
@@ -17,54 +16,24 @@ interface ChatBotProps {
   patientId: string;
 }
 
-const systemInstruction = `You are an advanced AI assistant for diabetes management, named 'GlucoGuide'. 
-Your purpose is to provide comprehensive and informative answers to questions about diet, exercise, medication, symptoms, and general diabetes care. 
-You can discuss a wide range of topics to help users better understand their condition.
-However, it is CRITICALLY IMPORTANT that you are not a replacement for a real doctor. 
-Therefore, you MUST ALWAYS conclude every single response with a clear and prominent disclaimer in the user's language: 
-'IMPORTANT: The information provided is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or another qualified health provider with any questions you may have regarding a medical condition.'`;
-
 export const ChatBot: React.FC<ChatBotProps> = ({ patientId }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [chatSession, setChatSession] = useState<Chat | null>(null);
   const { t } = useTranslation();
+  
+  // Chat history is now reset if the language changes, which is a sensible UX.
+  const [messages, setMessages] = useState<ChatMessage[]>(() => [
+    { role: 'model', text: t('aiWelcomeMessage') },
+  ]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // FIX: The API key must be obtained exclusively from the environment variable `process.env.API_KEY`.
-    const apiKey = process.env.API_KEY;
+    // This effect ensures that if the language changes, the welcome message is updated.
+    setMessages([{ role: 'model', text: t('aiWelcomeMessage') }]);
+  }, [t]);
 
-    if (!apiKey) {
-      console.error("API_KEY is not configured. Please set this environment variable in your deployment environment.");
-      setError("AI Assistant is not configured. The API_KEY is missing. Please check your project settings.");
-      setChatSession(null);
-      setMessages([]);
-      return;
-    }
-
-    // Initialize the chat session
-    try {
-      const ai = new GoogleGenAI({ apiKey: apiKey as string });
-      const session = ai.chats.create({
-        model: 'gemini-2.5-flash',
-        config: { systemInstruction },
-      });
-      setChatSession(session);
-      setError(null);
-      setMessages([
-        { role: 'model', text: t('aiWelcomeMessage') },
-      ]);
-    } catch (e) {
-      console.error("Failed to initialize Gemini AI:", e);
-      setError(t('aiError'));
-      setChatSession(null);
-      setMessages([]);
-    }
-  }, [patientId, t]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -72,39 +41,54 @@ export const ChatBot: React.FC<ChatBotProps> = ({ patientId }) => {
 
   const handleSendMessage = async (e: FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || isLoading || !chatSession) return;
+    if (!input.trim() || isLoading) return;
 
     const userMessage: ChatMessage = { role: 'user', text: input };
-    setMessages(prev => [...prev, userMessage]);
+    const currentMessages = [...messages, userMessage];
+    setMessages(currentMessages);
+    const messageToSend = input;
     setInput('');
     setIsLoading(true);
     setError(null);
 
     try {
-      const result = await chatSession.sendMessageStream({ message: input });
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        // Send history *before* the current user message
+        body: JSON.stringify({ history: messages, message: messageToSend }),
+      });
       
+      if (!response.ok || !response.body) {
+        throw new Error(response.statusText || 'Failed to get response from server.');
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
       let currentResponse = '';
       setMessages(prev => [...prev, { role: 'model', text: '' }]);
 
-      for await (const chunk of result) {
-        currentResponse += chunk.text;
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        currentResponse += decoder.decode(value, { stream: true });
         setMessages(prev => {
           const newMessages = [...prev];
           newMessages[newMessages.length - 1].text = currentResponse;
           return newMessages;
         });
       }
+
     } catch (e) {
-      console.error("Gemini API error:", e);
+      console.error("Chat API error:", e);
       setError(t('aiError'));
-      // On failure, remove the user message and the empty model placeholder
-      setMessages(prev => prev.slice(0, -2));
+      // On failure, remove the optimistic user message
+      setMessages(prev => prev.filter(msg => msg !== userMessage));
     } finally {
       setIsLoading(false);
     }
   };
-
-  const isChatDisabled = isLoading || !chatSession;
 
   return (
     <>
@@ -143,7 +127,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ patientId }) => {
                 />
               </div>
             ))}
-            {isLoading && (
+            {isLoading && messages[messages.length - 1]?.role === 'user' && (
               <div className="flex justify-start">
                   <div className="bg-zinc-700/80 text-zinc-400 rounded-xl px-4 py-2 animate-pulse">
                       {t('aiLoading')}
@@ -166,12 +150,12 @@ export const ChatBot: React.FC<ChatBotProps> = ({ patientId }) => {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder={t('typeYourMessage')}
                 className="w-full px-4 py-2 bg-zinc-900/50 text-white placeholder-zinc-400 border border-zinc-700 rounded-full focus:ring-2 focus:ring-purple-500/70 focus:border-purple-500 outline-none transition-all disabled:opacity-50"
-                disabled={isChatDisabled}
+                disabled={isLoading}
               />
               <button
                 type="submit"
                 className="p-3 bg-purple-600 text-white rounded-full hover:bg-purple-500 shadow-md shadow-purple-500/20 hover:shadow-lg hover:shadow-purple-500/30 disabled:bg-purple-500/50 disabled:shadow-none disabled:cursor-not-allowed transition-all transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-purple-500/50"
-                disabled={!input.trim() || isChatDisabled}
+                disabled={!input.trim() || isLoading}
                 aria-label={t('sendMessage')}
               >
                 <PaperAirplaneIcon className="w-5 h-5" />
