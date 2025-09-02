@@ -35,10 +35,12 @@ export const ChatBot: React.FC<ChatBotProps> = ({ patientId }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Check for API key first. This provides a clear error message to the developer if the environment variable is not set.
-    if (!process.env.API_KEY) {
-      console.error("Gemini API key is not configured. Please set the API_KEY environment variable in your deployment environment.");
-      setError("AI Assistant is not configured. The API key is missing.");
+    // FIX: The API key must be obtained exclusively from the environment variable `process.env.API_KEY`.
+    const apiKey = process.env.API_KEY;
+
+    if (!apiKey) {
+      console.error("API_KEY is not configured. Please set this environment variable in your deployment environment.");
+      setError("AI Assistant is not configured. The API_KEY is missing. Please check your project settings.");
       setChatSession(null);
       setMessages([]);
       return;
@@ -46,7 +48,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ patientId }) => {
 
     // Initialize the chat session
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+      const ai = new GoogleGenAI({ apiKey: apiKey as string });
       const session = ai.chats.create({
         model: 'gemini-2.5-flash',
         config: { systemInstruction },
