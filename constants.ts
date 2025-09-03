@@ -1,5 +1,5 @@
 
-import { InsulinType } from './types';
+import { InsulinType, GlucoseType, InjectionSite } from './types';
 
 interface InsulinTypeDetail {
   name: string;
@@ -23,4 +23,33 @@ export const INSULIN_TYPE_DETAILS: Record<InsulinType, InsulinTypeDetail> = {
     name: 'Long-acting',
     colorClass: 'bg-rose-500/20 text-rose-300 border border-rose-500/30',
   },
+};
+
+interface GlucoseTypeDetail {
+    nameKey: string;
+}
+
+export const GLUCOSE_TYPE_DETAILS: Record<GlucoseType, GlucoseTypeDetail> = {
+    [GlucoseType.PRE_MEAL]: { nameKey: 'preMeal' },
+    [GlucoseType.POST_MEAL]: { nameKey: 'postMeal' },
+    [GlucoseType.FASTING]: { nameKey: 'fasting' },
+    [GlucoseType.OTHER]: { nameKey: 'other' },
+};
+
+export const GLUCOSE_THRESHOLDS = {
+  HYPO: 70,  // Lower bound for normal
+  HYPER: 180, // Upper bound for normal
+};
+
+interface InjectionSiteDetail {
+    nameKey: string;
+    coords: { cx: string; cy: string };
+    area: { x: string; y: string; width: string; height: string; }
+}
+
+export const INJECTION_SITE_DETAILS: Record<InjectionSite, InjectionSiteDetail> = {
+    [InjectionSite.LEFT_ABDOMEN_UPPER]: { nameKey: 'leftAbdomenUpper', coords: { cx: '35%', cy: '35%' }, area: { x: '0', y: '0', width: '50%', height: '50%' } },
+    [InjectionSite.RIGHT_ABDOMEN_UPPER]: { nameKey: 'rightAbdomenUpper', coords: { cx: '65%', cy: '35%' }, area: { x: '50%', y: '0', width: '50%', height: '50%' } },
+    [InjectionSite.LEFT_ABDOMEN_LOWER]: { nameKey: 'leftAbdomenLower', coords: { cx: '35%', cy: '65%' }, area: { x: '0', y: '50%', width: '50%', height: '50%' } },
+    [InjectionSite.RIGHT_ABDOMEN_LOWER]: { nameKey: 'rightAbdomenLower', coords: { cx: '65%', cy: '65%' }, area: { x: '50%', y: '50%', width: '50%', height: '50%' } },
 };

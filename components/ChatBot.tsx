@@ -129,8 +129,10 @@ export const ChatBot: React.FC<ChatBotProps> = ({ patientId }) => {
             ))}
             {isLoading && messages[messages.length - 1]?.role === 'user' && (
               <div className="flex justify-start">
-                  <div className="bg-zinc-700/80 text-zinc-400 rounded-xl px-4 py-2 animate-pulse">
-                      {t('aiLoading')}
+                  <div className="bg-zinc-700/80 text-zinc-400 rounded-xl px-4 py-3 flex items-center space-x-1.5">
+                      <span className="w-2 h-2 bg-zinc-400 rounded-full animate-pulse [animation-delay:-0.3s]"></span>
+                      <span className="w-2 h-2 bg-zinc-400 rounded-full animate-pulse [animation-delay:-0.15s]"></span>
+                      <span className="w-2 h-2 bg-zinc-400 rounded-full animate-pulse"></span>
                   </div>
               </div>
             )}

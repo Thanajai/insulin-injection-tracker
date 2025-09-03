@@ -12,6 +12,8 @@ import { HomePage } from './components/HomePage';
 import { AuthPage } from './components/AuthPage';
 import { useTranslation } from './components/LanguageProvider';
 import { ChatBot } from './components/ChatBot';
+import { AnalyticsDashboard } from './components/AnalyticsDashboard';
+import { InjectionSiteTracker } from './components/InjectionSiteTracker';
 
 const App: React.FC = () => {
   const [injections, setInjections] = useState<Injection[]>([]);
@@ -263,6 +265,16 @@ const App: React.FC = () => {
               <LastInjectionCard lastInjection={lastInjection} />
               <TotalUnitsCard injections={injections} />
             </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-8">
+              <div className="lg:col-span-3">
+                <AnalyticsDashboard injections={injections} />
+              </div>
+              <div className="lg:col-span-2">
+                <InjectionSiteTracker injections={injections} />
+              </div>
+            </div>
+
             <InjectionList
               injections={injections}
               onDelete={handleDeleteInjection}

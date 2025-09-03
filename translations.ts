@@ -54,12 +54,36 @@ export const translations = {
     editInjection: 'Edit Injection',
     insulinType: 'Insulin Type',
     notesOptional: 'Notes (Optional)',
-    notesPlaceholder: 'e.g., Before breakfast',
+    mealNotesPlaceholder: 'e.g., Meal details, activity level...',
     scheduleNextDose: 'Schedule Next Dose (Optional)',
     errorValidUnits: 'Please enter a valid number of units greater than 0.',
     errorNextDoseFuture: 'The next dose must be scheduled for a future time.',
     saveInjection: 'Save Injection',
     openCalendar: 'Open calendar',
+    contextualInfo: 'Contextual Information (Optional)',
+    glucoseLevel: 'Blood Glucose (mg/dL)',
+    glucoseUnit: 'mg/dL',
+    glucoseType: 'Reading Type',
+    preMeal: 'Pre-meal',
+    postMeal: 'Post-meal',
+    fasting: 'Fasting',
+    other: 'Other',
+    carbohydrateIntake: 'Carbohydrate Intake (grams)',
+    carbsUnit: 'g',
+    errorValidGlucose: 'Please enter a valid glucose level.',
+    errorValidCarbs: 'Please enter a valid carb amount.',
+    injectionSite: 'Injection Site',
+
+    // Injection Sites
+    leftAbdomenUpper: 'Left Upper Abdomen',
+    rightAbdomenUpper: 'Right Upper Abdomen',
+    leftAbdomenLower: 'Left Lower Abdomen',
+    rightAbdomenLower: 'Right Lower Abdomen',
+    
+    // Glucose Alerts
+    hypo: 'Low',
+    hyper: 'High',
+    normal: 'Normal',
 
     // Dashboard Cards
     lastInjection: 'Last Injection',
@@ -102,6 +126,16 @@ export const translations = {
     deleteConfirmation: 'Are you sure you want to delete this injection record?',
     edit: 'Edit',
     delete: 'Delete',
+
+    // Analytics & Tracker
+    trendsLast7Days: 'Trends - Last 7 Days',
+    noDataForChart: 'Not enough data to display chart.',
+    avgDailyUnits: 'Avg. Daily Units',
+    avgGlucose: 'Avg. Glucose',
+    totalInsulin: 'Total Insulin',
+    injectionSiteTracker: 'Injection Site Tracker',
+    mostRecentInjection: 'Most recent site is solid',
+    noSiteData: 'Log injections with a site to see tracker',
 
     // FIX: Add ChatBot translations
     // ChatBot
@@ -169,13 +203,37 @@ export const translations = {
     editInjection: 'Editar Inyección',
     insulinType: 'Tipo de Insulina',
     notesOptional: 'Notas (Opcional)',
-    notesPlaceholder: 'Ej., Antes del desayuno',
+    mealNotesPlaceholder: 'Ej., Detalles de la comida, nivel de actividad...',
     scheduleNextDose: 'Programar Próxima Dosis (Opcional)',
     errorValidUnits: 'Por favor, ingrese un número válido de unidades mayor que 0.',
     errorNextDoseFuture: 'La próxima dosis debe ser programada para un tiempo futuro.',
     saveInjection: 'Guardar Inyección',
     openCalendar: 'Abrir calendario',
+    contextualInfo: 'Información Contextual (Opcional)',
+    glucoseLevel: 'Glucosa en Sangre (mg/dL)',
+    glucoseUnit: 'mg/dL',
+    glucoseType: 'Tipo de Lectura',
+    preMeal: 'Pre-comida',
+    postMeal: 'Post-comida',
+    fasting: 'En ayunas',
+    other: 'Otro',
+    carbohydrateIntake: 'Ingesta de Carbohidratos (gramos)',
+    carbsUnit: 'g',
+    errorValidGlucose: 'Por favor, ingrese un nivel de glucosa válido.',
+    errorValidCarbs: 'Por favor, ingrese una cantidad de carbohidratos válida.',
+    injectionSite: 'Sitio de Inyección',
+    
+    // Injection Sites
+    leftAbdomenUpper: 'Abdomen Superior Izquierdo',
+    rightAbdomenUpper: 'Abdomen Superior Derecho',
+    leftAbdomenLower: 'Abdomen Inferior Izquierdo',
+    rightAbdomenLower: 'Abdomen Inferior Derecho',
 
+    // Glucose Alerts
+    hypo: 'Bajo',
+    hyper: 'Alto',
+    normal: 'Normal',
+    
     // Dashboard Cards
     lastInjection: 'Última Inyección',
     noInjectionsLogged: 'No hay inyecciones registradas',
@@ -217,6 +275,16 @@ export const translations = {
     deleteConfirmation: '¿Estás seguro de que quieres eliminar este registro de inyección?',
     edit: 'Editar',
     delete: 'Eliminar',
+    
+    // Analytics & Tracker
+    trendsLast7Days: 'Tendencias - Últimos 7 Días',
+    noDataForChart: 'No hay suficientes datos para mostrar el gráfico.',
+    avgDailyUnits: 'Unidades Diarias Prom.',
+    avgGlucose: 'Glucosa Prom.',
+    totalInsulin: 'Insulina Total',
+    injectionSiteTracker: 'Rastreador de Sitios de Inyección',
+    mostRecentInjection: 'El sitio más reciente es sólido',
+    noSiteData: 'Registre inyecciones con un sitio para ver el rastreador',
 
     // FIX: Add ChatBot translations
     // ChatBot
@@ -284,12 +352,36 @@ export const translations = {
     editInjection: "Modifier l'injection",
     insulinType: "Type d'insuline",
     notesOptional: 'Notes (Facultatif)',
-    notesPlaceholder: 'Ex: Avant le petit déjeuner',
+    mealNotesPlaceholder: 'Ex: Détails du repas, niveau d’activité...',
     scheduleNextDose: 'Planifier la prochaine dose (Facultatif)',
     errorValidUnits: 'Veuillez entrer un nombre d’unités valide supérieur à 0.',
     errorNextDoseFuture: 'La prochaine dose doit être programmée pour une date ultérieure.',
     saveInjection: "Enregistrer l'injection",
     openCalendar: 'Ouvrir le calendrier',
+    contextualInfo: 'Informations contextuelles (facultatif)',
+    glucoseLevel: 'Glycémie (mg/dL)',
+    glucoseUnit: 'mg/dL',
+    glucoseType: 'Type de lecture',
+    preMeal: 'Avant le repas',
+    postMeal: 'Après le repas',
+    fasting: 'À jeun',
+    other: 'Autre',
+    carbohydrateIntake: 'Apport en glucides (grammes)',
+    carbsUnit: 'g',
+    errorValidGlucose: 'Veuillez entrer un niveau de glucose valide.',
+    errorValidCarbs: 'Veuillez entrer une quantité de glucides valide.',
+    injectionSite: "Site d'injection",
+    
+    // Injection Sites
+    leftAbdomenUpper: 'Abdomen Supérieur Gauche',
+    rightAbdomenUpper: 'Abdomen Supérieur Droit',
+    leftAbdomenLower: 'Abdomen Inférieur Gauche',
+    rightAbdomenLower: 'Abdomen Inférieur Droit',
+
+    // Glucose Alerts
+    hypo: 'Bas',
+    hyper: 'Élevé',
+    normal: 'Normal',
 
     // Dashboard Cards
     lastInjection: 'Dernière injection',
@@ -332,6 +424,16 @@ export const translations = {
     deleteConfirmation: 'Êtes-vous sûr de vouloir supprimer cet enregistrement d’injection ?',
     edit: 'Modifier',
     delete: 'Supprimer',
+    
+    // Analytics & Tracker
+    trendsLast7Days: 'Tendances - 7 derniers jours',
+    noDataForChart: 'Pas assez de données pour afficher le graphique.',
+    avgDailyUnits: 'Unités/jour moy.',
+    avgGlucose: 'Glycémie moy.',
+    totalInsulin: 'Insuline totale',
+    injectionSiteTracker: "Suivi des sites d'injection",
+    mostRecentInjection: 'Le site le plus récent est plein',
+    noSiteData: 'Enregistrez des injections avec un site pour voir le suivi',
 
     // FIX: Add ChatBot translations
     // ChatBot
@@ -399,12 +501,36 @@ export const translations = {
     editInjection: 'Injektion bearbeiten',
     insulinType: 'Insulintyp',
     notesOptional: 'Notizen (Optional)',
-    notesPlaceholder: 'z.B. Vor dem Frühstück',
+    mealNotesPlaceholder: 'z.B. Mahlzeitdetails, Aktivitätsniveau...',
     scheduleNextDose: 'Nächste Dosis planen (Optional)',
     errorValidUnits: 'Bitte geben Sie eine gültige Anzahl von Einheiten größer als 0 ein.',
     errorNextDoseFuture: 'Die nächste Dosis muss für einen zukünftigen Zeitpunkt geplant werden.',
     saveInjection: 'Injektion speichern',
     openCalendar: 'Kalender öffnen',
+    contextualInfo: 'Kontextinformationen (optional)',
+    glucoseLevel: 'Blutzucker (mg/dL)',
+    glucoseUnit: 'mg/dL',
+    glucoseType: 'Messwert-Typ',
+    preMeal: 'Vor der Mahlzeit',
+    postMeal: 'Nach der Mahlzeit',
+    fasting: 'Nüchtern',
+    other: 'Andere',
+    carbohydrateIntake: 'Kohlenhydrataufnahme (Gramm)',
+    carbsUnit: 'g',
+    errorValidGlucose: 'Bitte geben Sie einen gültigen Blutzuckerwert ein.',
+    errorValidCarbs: 'Bitte geben Sie eine gültige Kohlenhydratmenge ein.',
+    injectionSite: 'Injektionsstelle',
+    
+    // Injection Sites
+    leftAbdomenUpper: 'Linker Oberbauch',
+    rightAbdomenUpper: 'Rechter Oberbauch',
+    leftAbdomenLower: 'Linker Unterbauch',
+    rightAbdomenLower: 'Rechter Unterbauch',
+
+    // Glucose Alerts
+    hypo: 'Niedrig',
+    hyper: 'Hoch',
+    normal: 'Normal',
 
     // Dashboard Cards
     lastInjection: 'Letzte Injektion',
@@ -447,6 +573,16 @@ export const translations = {
     deleteConfirmation: 'Sind Sie sicher, dass Sie diesen Injektionsdatensatz löschen möchten?',
     edit: 'Bearbeiten',
     delete: 'Löschen',
+    
+    // Analytics & Tracker
+    trendsLast7Days: 'Trends - Letzte 7 Tage',
+    noDataForChart: 'Nicht genügend Daten, um Diagramm anzuzeigen.',
+    avgDailyUnits: 'Ø Tgl. Einheiten',
+    avgGlucose: 'Ø Glukose',
+    totalInsulin: 'Gesamtinsulin',
+    injectionSiteTracker: 'Injektionsstellen-Tracker',
+    mostRecentInjection: 'Neueste Stelle ist gefüllt',
+    noSiteData: 'Protokollieren Sie Injektionen mit einer Stelle, um den Tracker zu sehen',
 
     // FIX: Add ChatBot translations
     // ChatBot
@@ -514,12 +650,36 @@ export const translations = {
     editInjection: 'इंजेक्शन संपादित करें',
     insulinType: 'इंसुलिन का प्रकार',
     notesOptional: 'नोट्स (वैकल्पिक)',
-    notesPlaceholder: 'जैसे, नाश्ते से पहले',
+    mealNotesPlaceholder: 'जैसे, भोजन का विवरण, गतिविधि स्तर...',
     scheduleNextDose: 'अगली खुराक निर्धारित करें (वैकल्पिक)',
     errorValidUnits: 'कृपया 0 से अधिक इकाइयों की एक मान्य संख्या दर्ज करें।',
     errorNextDoseFuture: 'अगली खुराक भविष्य के समय के लिए निर्धारित की जानी चाहिए।',
     saveInjection: 'इंजेक्शन सहेजें',
     openCalendar: 'कैलेंडर खोलें',
+    contextualInfo: 'प्रासंगिक जानकारी (वैकल्पिक)',
+    glucoseLevel: 'रक्त शर्करा (mg/dL)',
+    glucoseUnit: 'mg/dL',
+    glucoseType: 'रीडिंग का प्रकार',
+    preMeal: 'भोजन-पूर्व',
+    postMeal: 'भोजन-उपरांत',
+    fasting: 'उपवास',
+    other: 'अन्य',
+    carbohydrateIntake: 'कार्बोहाइड्रेट सेवन (ग्राम)',
+    carbsUnit: 'g',
+    errorValidGlucose: 'कृपया एक मान्य ग्लूकोज स्तर दर्ज करें।',
+    errorValidCarbs: 'कृपया एक मान्य कार्ब राशि दर्ज करें।',
+    injectionSite: 'इंजेक्शन स्थल',
+
+    // Injection Sites
+    leftAbdomenUpper: 'ऊपरी बायां पेट',
+    rightAbdomenUpper: 'ऊपरी दायां पेट',
+    leftAbdomenLower: 'निचला बायां पेट',
+    rightAbdomenLower: 'निचला दायां पेट',
+
+    // Glucose Alerts
+    hypo: 'कम',
+    hyper: 'उच्च',
+    normal: 'सामान्य',
 
     // Dashboard Cards
     lastInjection: 'अंतिम इंजेक्शन',
@@ -563,6 +723,16 @@ export const translations = {
     edit: 'संपादित करें',
     delete: 'हटाएं',
     
+    // Analytics & Tracker
+    trendsLast7Days: 'रुझान - अंतिम 7 दिन',
+    noDataForChart: 'चार्ट प्रदर्शित करने के लिए पर्याप्त डेटा नहीं है।',
+    avgDailyUnits: 'औसत दैनिक यूनिट',
+    avgGlucose: 'औसत ग्लूकोज',
+    totalInsulin: 'कुल इंसुलिन',
+    injectionSiteTracker: 'इंजेक्शन स्थल ट्रैकर',
+    mostRecentInjection: 'नवीनतम स्थल ठोस है',
+    noSiteData: 'ट्रैकर देखने के लिए एक साइट के साथ इंजेक्शन लॉग करें',
+
     // FIX: Add ChatBot translations
     // ChatBot
     aiWelcomeMessage: 'नमस्ते! मैं ग्लूकोगाइड हूं, मधुमेह प्रबंधन के लिए आपका एआई सहायक। मैं आज आपकी कैसे मदद कर सकता हूं?',

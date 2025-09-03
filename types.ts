@@ -5,6 +5,20 @@ export enum InsulinType {
   LONG_ACTING = 'LONG_ACTING',
 }
 
+export enum GlucoseType {
+  PRE_MEAL = 'PRE_MEAL',
+  POST_MEAL = 'POST_MEAL',
+  FASTING = 'FASTING',
+  OTHER = 'OTHER',
+}
+
+export enum InjectionSite {
+  LEFT_ABDOMEN_UPPER = 'LEFT_ABDOMEN_UPPER',
+  RIGHT_ABDOMEN_UPPER = 'RIGHT_ABDOMEN_UPPER',
+  LEFT_ABDOMEN_LOWER = 'LEFT_ABDOMEN_LOWER',
+  RIGHT_ABDOMEN_LOWER = 'RIGHT_ABDOMEN_LOWER',
+}
+
 export interface Injection {
   id: string;
   timestamp: number;
@@ -12,6 +26,10 @@ export interface Injection {
   units: number;
   notes?: string;
   nextDoseTimestamp?: number; // Added to link to the next scheduled dose
+  glucoseLevel?: number;
+  glucoseType?: GlucoseType;
+  carbs?: number;
+  site?: InjectionSite;
 }
 
 export type Role = 'Doctor' | 'Patient';

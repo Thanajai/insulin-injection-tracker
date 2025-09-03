@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Injection, User } from '../types';
-import { INSULIN_TYPE_DETAILS } from '../constants';
-import { TrashIcon, PencilIcon } from './icons';
+import { INSULIN_TYPE_DETAILS, GLUCOSE_TYPE_DETAILS, GLUCOSE_THRESHOLDS, INJECTION_SITE_DETAILS } from '../constants';
+import { TrashIcon, PencilIcon, BloodDropIcon, CubeTransparentIcon, ExclamationTriangleIcon, MapPinIcon } from './icons';
 import { useTranslation } from './LanguageProvider';
 
 
@@ -33,10 +33,18 @@ const getPatientName = (patientId: string | null): string => {
 };
 
 const InjectionListItem: React.FC<InjectionListItemProps> = ({ injection, onDelete, onEdit, currentUser }) => {
-    const { id, timestamp, type, units, notes } = injection;
+    const { id, timestamp, type, units, notes, glucoseLevel, glucoseType, carbs, site } = injection;
     const typeDetails = INSULIN_TYPE_DETAILS[type];
     const date = new Date(timestamp);
     const { t, language } = useTranslation();
+
+    const getGlucoseStatus = (level: number | undefined): { status: 'normal' | 'hypo' | 'hyper', className: string, labelKey: string } | null => {
+        if (level === undefined) return null;
+        if (level < GLUCOSE_THRESHOLDS.HYPO) return { status: 'hypo', className: 'text-sky-400', labelKey: 'hypo' };
+        if (level > GLUCOSE_THRESHOLDS.HYPER) return { status: 'hyper', className: 'text-amber-400', labelKey: 'hyper' };
+        return { status: 'normal', className: '', labelKey: 'normal' };
+    };
+    const glucoseStatus = getGlucoseStatus(glucoseLevel);
 
     const formattedDate = date.toLocaleDateString(language, {
       year: 'numeric',
@@ -50,9 +58,9 @@ const InjectionListItem: React.FC<InjectionListItemProps> = ({ injection, onDele
     const isDoctor = currentUser?.role === 'Doctor';
 
     return (
-        <li className="bg-zinc-800/30 backdrop-blur-lg border border-zinc-700/50 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0 sm:space-x-4 transition-all duration-300 hover:shadow-xl hover:border-zinc-600/60 hover:scale-[1.02]">
-            <div className="flex-grow">
-                <div className="flex items-center space-x-4 mb-2">
+        <li className="bg-zinc-800/30 backdrop-blur-lg border border-zinc-700/50 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0 sm:space-x-4 transition-all duration-300 hover:shadow-xl hover:border-zinc-600/60 hover:scale-[1.02] animate-fade-in-fast">
+            <div className="flex-grow w-full">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-2">
                     <span className={`px-3 py-1 text-sm font-semibold rounded-full ${typeDetails.colorClass}`}>
                         {typeDetails.name}
                     </span>
@@ -62,7 +70,37 @@ const InjectionListItem: React.FC<InjectionListItemProps> = ({ injection, onDele
                     <p className="text-3xl font-bold text-zinc-100">{units.toLocaleString(language)}</p>
                     <span className="text-zinc-400">{t('units')}</span>
                 </div>
-                {notes && <p className="mt-2 text-zinc-300 italic">"{notes}"</p>}
+                
+                {(glucoseLevel || carbs || site) && (
+                    <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+                        {glucoseLevel && (
+                            <div className="flex items-center space-x-1.5 text-rose-300">
+                                <BloodDropIcon className="w-4 h-4" />
+                                <span className="font-semibold">{glucoseLevel} {t('glucoseUnit')}</span>
+                                {glucoseType && <span className="text-rose-400/80">({t(GLUCOSE_TYPE_DETAILS[glucoseType].nameKey as any)})</span>}
+                                {glucoseStatus && (glucoseStatus.status === 'hypo' || glucoseStatus.status === 'hyper') && (
+                                    <span className={`ml-1 flex items-center text-xs font-bold ${glucoseStatus.className}`}>
+                                        <ExclamationTriangleIcon className="w-3.5 h-3.5 mr-0.5" />
+                                        {t(glucoseStatus.labelKey as any)}
+                                    </span>
+                                )}
+                            </div>
+                        )}
+                        {carbs && (
+                             <div className="flex items-center space-x-1.5 text-amber-300">
+                                <CubeTransparentIcon className="w-4 h-4" />
+                                <span className="font-semibold">{carbs} {t('carbsUnit')}</span>
+                            </div>
+                        )}
+                        {site && (
+                             <div className="flex items-center space-x-1.5 text-teal-300">
+                                <MapPinIcon className="w-4 h-4" />
+                                <span className="font-semibold">{t(INJECTION_SITE_DETAILS[site].nameKey as any)}</span>
+                            </div>
+                        )}
+                    </div>
+                )}
+                {notes && <p className="mt-3 text-zinc-300 italic border-l-2 border-zinc-600 pl-3">"{notes}"</p>}
             </div>
             <div className="flex items-center self-end sm:self-center">
               {isDoctor && (
